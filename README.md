@@ -3,7 +3,7 @@
 Установка
 ---
 1. Клонируем репозиторий в папку, где будет находиться проект
-2. Создаем в любую папку LibGDX проект с такими настройками:  ![screenshot](https://github.com/YarikBur/Wandering//blob/master/libgdx_settings.png)
+2. Создаем в любую папку LibGDX проект с такими настройками:  ![screenshot](https://github.com/YarikBur/Wandering/blob/master/libgdx_settings.png)
 3. 1. **Обязательно настроить Advanced для своего редактора**
 4. Переносим созданные файлы в клонированный репозиторий без зымены файлов
 5. Импортируем проект в свой редактор и радуемся :smile:
