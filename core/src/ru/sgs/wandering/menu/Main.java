@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.sgstudio.sgs02.utils.Settings;
 import com.sgstudio.sgs02.utils.Variables;
@@ -41,7 +42,7 @@ public class Main implements Screen {
 		cam.update();
 		batch.setProjectionMatrix(cam.combined);
 		
-		Gdx.gl.glClearColor(1, 0, 0, 1);
+		Gdx.gl.glClearColor(color(149), color(124), color(120), 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
 		
@@ -49,6 +50,10 @@ public class Main implements Screen {
 //		batch.draw(new Texture("gui.png"), 0, 0);
 		inventory.render(batch, ((Variables.stringToInt(Settings.getProperty("width"))/100)*78.5f)/2, ((Variables.stringToInt(Settings.getProperty("height"))/100)*10f) + 2);
 		batch.end();
+	}
+	
+	private float color(int color) {
+		return color/255f;
 	}
 	
 	private float rotationSpeed = 0.5f;

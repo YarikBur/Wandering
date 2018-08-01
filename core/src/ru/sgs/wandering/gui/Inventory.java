@@ -24,7 +24,7 @@ public class Inventory implements GUI{
 	@Override
 	public void setTexture() {
 		tiles = new Tiles();
-		tiles.createAtlas("gui/inventory.png", 3, 3);
+		tiles.createAtlas("gui/inventory.png", 6, 6);
 		textureRegions = tiles.getTextureRegion();
 	}
 	
@@ -40,40 +40,14 @@ public class Inventory implements GUI{
 	
 	@Override
 	public void render(SpriteBatch batch, float f, float g) {
-		//Inventory
-		for(float y=g; y < Height/2 + g; y+=2)
-			X: for(float x=f; x < Width/2 + f; x+=2) {
-				if(x==f) {
-					if(y==g)
-						Scale.draw(batch, getTextureRegions("tiles2_0"), x, y, 1);
-					else if(y==(Height/2 + g) - 2)
-						Scale.draw(batch, getTextureRegions("tiles0_0"), x, y, 1);
-					else
-						Scale.draw(batch, getTextureRegions("tiles1_0"), x, y, 1);
-				} else if(x==(Width/2 + f)-2) {
-					if(y==g)
-						Scale.draw(batch, getTextureRegions("tiles2_2"), x, y, 1);
-					else if(y==(Height/2 + g) - 2)
-						Scale.draw(batch, getTextureRegions("tiles0_2"), x, y, 1);
-					else
-						Scale.draw(batch, getTextureRegions("tiles1_2"), x, y, 1);
-				} else if(x>=f+3 && x<=((Width/2 + f)-15) && y >=g+3 && y<=((Height/2 + g) - 2)-3) {
-					continue X;
-				} else {
-					if(y==g)
-						Scale.draw(batch, getTextureRegions("tiles2_1"), x, y, 1);
-					else if(y==(Height/2 + g) - 2)
-						Scale.draw(batch, getTextureRegions("tiles0_1"), x, y, 1);
-					else
-						Scale.draw(batch, getTextureRegions("tiles1_1"), x, y, 1);
-				}
+		//Cell
+		for(float y=g+3; y < g + 3 + 84; y+=14)
+			for(float x=f + 3; x < f + 3 + 52; x+=14) {
+				cell.render(batch, x, y-7);
 			}
 		
-		//Cell
-		for(float y=g+3; y < g + 3 + 78; y+=13)
-			for(float x=f + 3; x < f + 3 + 52; x+=13) {
-				cell.render(batch, x, y);
-			}
+		//Inventory
+		Render.render(batch, f, g, Width, Height, getTextureRegions(), 3, 11, 3, 3);
 	}
 	
 	@Override

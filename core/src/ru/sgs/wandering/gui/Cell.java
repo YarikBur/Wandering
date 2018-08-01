@@ -18,37 +18,14 @@ public class Cell implements GUI{
 	@Override
 	public void setTexture() {
 		tiles = new Tiles();
-		tiles.createAtlas("gui/cell.png", 3, 3);
+//		tiles.createAtlas("gui/cell.png", 3, 3);
+		tiles.createAtlas("gui/cell.png", 6, 6);
 		textureRegions = tiles.getTextureRegion();
 	}
 	
 	@Override
 	public void render(SpriteBatch batch, float f, float g) {
-		for(float y=g; y < Height/2 + g-2; y+=2)
-			for(float x=f; x < Width/2 + f-2; x+=2) {
-				if(x==f) {
-					if(y==g)
-						Scale.draw(batch, getTextureRegions("tiles2_0"), x, y, 1);
-					else if(y==(Height/2 + g) - 3)
-						Scale.draw(batch, getTextureRegions("tiles0_0"), x, y, 1);
-					else
-						Scale.draw(batch, getTextureRegions("tiles1_0"), x, y, 1);
-				} else if(x==(Width/2 + f)-3) {
-					if(y==g)
-						Scale.draw(batch, getTextureRegions("tiles2_2"), x, y, 1);
-					else if(y==(Height/2 + g) - 3)
-						Scale.draw(batch, getTextureRegions("tiles0_2"), x, y, 1);
-					else
-						Scale.draw(batch, getTextureRegions("tiles1_2"), x, y, 1);
-				} else {
-					if(y==g)
-						Scale.draw(batch, getTextureRegions("tiles2_1"), x, y, 1);
-					else if(y==(Height/2 + g) - 3)
-						Scale.draw(batch, getTextureRegions("tiles0_1"), x, y, 1);
-					else
-						Scale.draw(batch, getTextureRegions("tiles1_1"), x, y, 1);
-				}
-			}
+		Render.render(batch, f, g, Width, Height, getTextureRegions());
 	}
 
 	@Override
