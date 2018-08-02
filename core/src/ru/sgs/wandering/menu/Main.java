@@ -35,7 +35,9 @@ public class Main implements Screen {
 		inventory = new Inventory();
 		inventory.setTexture();
 	}
-
+	
+	int scroll = 0;
+	
 	@Override
 	public void render(float delta) {
 		handleInput();
@@ -48,7 +50,8 @@ public class Main implements Screen {
 		
 		batch.begin();
 //		batch.draw(new Texture("gui.png"), 0, 0);
-		inventory.render(batch, ((Variables.stringToInt(Settings.getProperty("width"))/100)*78.5f)/2, ((Variables.stringToInt(Settings.getProperty("height"))/100)*10f) + 2);
+		inventory.setCellY(scroll);
+		inventory.render(batch, ((Variables.stringToInt(Settings.getProperty("width"))/100)*78.5f)/2, ((Variables.stringToInt(Settings.getProperty("height"))/100)*10f)+2);
 		batch.end();
 	}
 	
@@ -83,6 +86,10 @@ public class Main implements Screen {
 		if (Gdx.input.isKeyPressed(Input.Keys.E)) {
 			cam.rotate(rotationSpeed, 0, 0, 1);
 		}
+		if(Gdx.input.isKeyPressed(Input.Keys.Z))
+			scroll--;
+		if(Gdx.input.isKeyPressed(Input.Keys.X))
+			scroll++;
 	}
 
 	@Override

@@ -13,6 +13,7 @@ public class Inventory implements GUI{
 	private static float Height;
 	
 	private static Tiles tiles;
+	private static float cellY;
 	private static Cell[] cell;
 	
 	private static Map<String, TextureRegion> textureRegions;
@@ -22,6 +23,7 @@ public class Inventory implements GUI{
 		for(int i=0; i<cell.length; i++) {
 			cell[i] = new Cell();
 		}
+		cell[0].setY(cell.length/4);
 	}
 	
 	@Override
@@ -45,11 +47,13 @@ public class Inventory implements GUI{
 	public void render(SpriteBatch batch, float f, float g) {
 		//Cell
 		int i=0;
-		for(float y=g+3; y < g + 3 + 84; y+=14)
-			for(float x=f + 3; x < f + 3 + 56; x+=14) {
-				cell[i].render(batch, x, y-7);
-				i++;
+		for(float y=g+3; y < g + 3 + (cell.length/4)*14; y+=14) {
+			cell[i].setH(g);
+			for(float x=f + 3; x < f + 3 + (cell.length/6)*14; x+=14) {
+					cell[i].render(batch, x, y-cellY);
 			}
+			i++;
+		}
 		
 		//Inventory
 		Render.render(batch, f, g, Width, Height, getTextureRegions(), 3, 11, 3, 3);
@@ -69,5 +73,13 @@ public class Inventory implements GUI{
 	@Override
 	public float getHeight() {
 		return Height;
+	}
+
+	public float getCellY() {
+		return cellY;
+	}
+
+	public void setCellY(float cellY) {
+		Inventory.cellY = cellY;
 	}
 }

@@ -17,6 +17,24 @@ public class Cell implements GUI{
 	
 	private String itemName;
 	private int itemQuantity;
+	private float h;
+	private static float y;
+	
+	public void setH(float y) {
+		this.h = y;
+	}
+	
+	public float getH() {
+		return h;
+	}
+	
+	public void setY(float y) {
+		Cell.y = y;
+	}
+	
+	public float getY() {
+		return y;
+	}
 	
 	public void setItemName(String name) {
 		this.itemName = name;
@@ -37,14 +55,20 @@ public class Cell implements GUI{
 	@Override
 	public void setTexture() {
 		tiles = new Tiles();
-//		tiles.createAtlas("gui/cell.png", 3, 3);
 		tiles.createAtlas("gui/cell.png", 6, 6);
 		textureRegions = tiles.getTextureRegion();
 	}
 	
 	@Override
 	public void render(SpriteBatch batch, float f, float g) {
-		Render.render(batch, f, g, Width, Height, getTextureRegions());
+		if((h+3 + y*14 - 7) < g+14) {
+			Render.render(batch, f, g, Width, Height, getTextureRegions(), g+14-(h+3 + y*14 - 7), 0);
+		} else if(h-g < 1)
+			Render.render(batch, f, g, Width, Height, getTextureRegions());
+		else if(h-g > 1) {
+			Render.render(batch, f, g, Width, Height, getTextureRegions(), 0, h-g);
+		}
+		
 	}
 
 	@Override
