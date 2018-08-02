@@ -15,6 +15,25 @@ public class Cell implements GUI{
 	private static Tiles tiles;
 	private static Map<String, TextureRegion> textureRegions;
 	
+	private String itemName;
+	private int itemQuantity;
+	
+	public void setItemName(String name) {
+		this.itemName = name;
+	}
+	
+	public String getItemName() {
+		return this.itemName;
+	}
+	
+	public void setItemQuantity(int quantity) {
+		this.itemQuantity = quantity;
+	}
+	
+	public int getItemQuantity() {
+		return this.itemQuantity;
+	}
+	
 	@Override
 	public void setTexture() {
 		tiles = new Tiles();

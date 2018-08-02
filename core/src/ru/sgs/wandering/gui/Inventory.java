@@ -13,12 +13,15 @@ public class Inventory implements GUI{
 	private static float Height;
 	
 	private static Tiles tiles;
-	private static Cell cell;
+	private static Cell[] cell;
 	
 	private static Map<String, TextureRegion> textureRegions;
 	
 	public Inventory() {
-		cell = new Cell();
+		cell = new Cell[24];
+		for(int i=0; i<cell.length; i++) {
+			cell[i] = new Cell();
+		}
 	}
 	
 	@Override
@@ -41,9 +44,11 @@ public class Inventory implements GUI{
 	@Override
 	public void render(SpriteBatch batch, float f, float g) {
 		//Cell
+		int i=0;
 		for(float y=g+3; y < g + 3 + 84; y+=14)
-			for(float x=f + 3; x < f + 3 + 52; x+=14) {
-				cell.render(batch, x, y-7);
+			for(float x=f + 3; x < f + 3 + 56; x+=14) {
+				cell[i].render(batch, x, y-7);
+				i++;
 			}
 		
 		//Inventory
