@@ -61,14 +61,12 @@ public class Cell implements GUI{
 	
 	@Override
 	public void render(SpriteBatch batch, float f, float g) {
-		if((h+3 + y*14 - 7) < g+14) {
-			Render.render(batch, f, g, Width, Height, getTextureRegions(), g+14-(h+3 + y*14 - 7), 0);
-		} else if(h-g < 1)
-			Render.render(batch, f, g, Width, Height, getTextureRegions());
-		else if(h-g > 1) {
+		if((h+3 + 6*14 - 7) < g+14) {
+			Render.render(batch, f, g, Width, Height, getTextureRegions(), g+14-(h+3 + 6*14 - 7), 0);
+		} else if(g > 0) {
 			Render.render(batch, f, g, Width, Height, getTextureRegions(), 0, h-g);
-		}
-		
+		} else if(g < 0)
+			Render.render(batch, f, g, Width, Height, getTextureRegions());
 	}
 
 	@Override

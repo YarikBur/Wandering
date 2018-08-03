@@ -50,7 +50,7 @@ public class Inventory implements GUI{
 		for(float y=g+3; y < g + 3 + (cell.length/4)*14; y+=14) {
 			cell[i].setH(g);
 			for(float x=f + 3; x < f + 3 + (cell.length/6)*14; x+=14) {
-					cell[i].render(batch, x, y-cellY);
+					cell[i].render(batch, x, y-cellY-7);
 			}
 			i++;
 		}
