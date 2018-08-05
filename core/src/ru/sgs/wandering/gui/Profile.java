@@ -12,10 +12,16 @@ public class Profile implements GUI {
 	private static Tiles tiles;
 	private static Cell[] cell;
 	private static Map<String, TextureRegion> textureRegions;
+	private static float cellY;
 	
 	public Profile() {
 		setTexture();
 		setResolution();
+		cell = new Cell[9];
+		for(int i=0; i<cell.length; i++) {
+			cell[i] = new Cell();
+		}
+		cell[0].setY(cell.length/4);
 	}
 	
 	@Override
@@ -26,8 +32,19 @@ public class Profile implements GUI {
 	}
 
 	@Override
-	public void render(SpriteBatch batch, float x, float y) {
+	public void render(SpriteBatch batch, float f, float g) {
+		//Cell
+		int i=0;
+		for(float y=g+3; y < g + 3 + (cell.length/4)*14; y+=14) {
+			cell[i].setH(g);
+			for(float x=f + 3; x < f + 3 + (cell.length/6)*14; x+=14) {
+					cell[i].render(batch, x, y-cellY-7);
+			}
+			i++;
+		}
 		
+		//Profile
+		Render.render(batch, f, g, Width, Height, getTextureRegions(), 3, 11, 3, 3);
 	}
 
 	@Override
