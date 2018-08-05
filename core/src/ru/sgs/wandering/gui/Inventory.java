@@ -15,10 +15,14 @@ public class Inventory implements GUI{
 	private static Tiles tiles;
 	private static float cellY;
 	private static Cell[] cell;
+	private static Scroll scroll;
 	
 	private static Map<String, TextureRegion> textureRegions;
 	
 	public Inventory() {
+		scroll = new Scroll();
+		scroll.setHeight(Height);
+		
 		cell = new Cell[24];
 		for(int i=0; i<cell.length; i++) {
 			cell[i] = new Cell();
@@ -57,6 +61,9 @@ public class Inventory implements GUI{
 		
 		//Inventory
 		Render.render(batch, f, g, Width, Height, getTextureRegions(), 3, 11, 3, 3);
+		
+		//Scroll
+		scroll.render(batch, f*2+Width-18, g*2+4);
 	}
 	
 	@Override
