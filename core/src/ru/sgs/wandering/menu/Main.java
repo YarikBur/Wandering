@@ -54,7 +54,7 @@ public class Main implements Screen {
 		inventory.render(batch, ((Variables.stringToInt(Settings.getProperty("width"))/100)*78.5f)/2, ((Variables.stringToInt(Settings.getProperty("height"))/100)*10f)+2);
 		batch.end();
 	}
-	
+
 	private float color(int color) {
 		return color/255f;
 	}

@@ -133,3 +133,5 @@ gradlew
 *.properties
 
 gradle/
+
+desktop/settings\.cfg

@@ -21,8 +21,6 @@ public class Inventory implements GUI{
 	
 	public Inventory() {
 		scroll = new Scroll();
-		scroll.setHeight(Height);
-		
 		cell = new Cell[24];
 		for(int i=0; i<cell.length; i++) {
 			cell[i] = new Cell();
@@ -63,6 +61,7 @@ public class Inventory implements GUI{
 		Render.render(batch, f, g, Width, Height, getTextureRegions(), 3, 11, 3, 3);
 		
 		//Scroll
+		scroll.setHeight(Height-22);
 		scroll.render(batch, f*2+Width-18, g*2+4);
 	}
 	
