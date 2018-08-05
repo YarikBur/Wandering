@@ -12,6 +12,7 @@ import com.sgstudio.sgs02.utils.Variables;
 
 import ru.sgs.wandering.gui.Cell;
 import ru.sgs.wandering.gui.Inventory;
+import ru.sgs.wandering.gui.Profile;
 
 public class Main implements Screen {
 	SpriteBatch batch;
@@ -19,7 +20,8 @@ public class Main implements Screen {
 	
 	Inventory inventory;
 	Cell cell;
-	
+	Texture gui;
+	Profile profile;
 	@Override
 	public void show() {
 		cam = new OrthographicCamera();
@@ -34,6 +36,8 @@ public class Main implements Screen {
 		
 		inventory = new Inventory();
 		inventory.setTexture();
+		gui = new Texture("gui.png");
+		profile = new Profile();
 	}
 	
 	int scroll = 0;
@@ -49,7 +53,7 @@ public class Main implements Screen {
 		
 		
 		batch.begin();
-//		batch.draw(new Texture("gui.png"), 0, 0);
+//		batch.draw(gui, 0, 0);
 		inventory.setCellY(scroll);
 		inventory.render(batch, ((Variables.stringToInt(Settings.getProperty("width"))/100)*78.5f)/2, ((Variables.stringToInt(Settings.getProperty("height"))/100)*10f)+2);
 		batch.end();
