@@ -24,6 +24,14 @@ public class Profile implements GUI {
 		cell[0].setY(cell.length/4);
 	}
 	
+	public static Cell[] getCell() {
+		return cell;
+	}
+
+	public static void setCell(Cell[] cell) {
+		Profile.cell = cell;
+	}
+
 	@Override
 	public void setTexture() {
 		tiles = new Tiles();

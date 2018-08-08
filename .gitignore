@@ -135,3 +135,5 @@ gradlew
 gradle/
 
 desktop/settings\.cfg
+
+\.vscode/

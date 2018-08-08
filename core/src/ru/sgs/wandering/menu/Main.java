@@ -95,6 +95,14 @@ public class Main implements Screen {
 			scroll--;
 		if(Gdx.input.isKeyPressed(Input.Keys.X))
 			scroll++;
+		
+		if(Gdx.input.isButtonPressed(0)) {
+			if((600-Gdx.input.getY()) >= inventory.getScroll().getMinYScroll() && (600-Gdx.input.getY()) <= inventory.getScroll().getMaxYScroll()+7)
+				if(Gdx.input.getX() >= inventory.getScroll().getX() && Gdx.input.getX() <= (inventory.getScroll().getX()+(7*2))) {
+					inventory.getScroll().scroll(600-Gdx.input.getY()-7);
+					System.out.println((600-Gdx.input.getY()) + "  " + inventory.getScroll().getY());
+				}
+		}
 	}
 
 	@Override
@@ -112,25 +120,21 @@ public class Main implements Screen {
 
 	@Override
 	public void pause() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void resume() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void hide() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
 		
 	}
 

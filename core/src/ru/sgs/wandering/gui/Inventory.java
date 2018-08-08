@@ -62,6 +62,7 @@ public class Inventory implements GUI{
 		
 		//Scroll
 		scroll.setHeight(Height-22);
+		scroll.setX(f*2+Width-18);
 		scroll.render(batch, f*2+Width-18, g*2+4);
 	}
 	
@@ -87,5 +88,9 @@ public class Inventory implements GUI{
 
 	public void setCellY(float cellY) {
 		Inventory.cellY = cellY;
+	}
+	
+	public Scroll getScroll() {
+		return scroll;
 	}
 }
