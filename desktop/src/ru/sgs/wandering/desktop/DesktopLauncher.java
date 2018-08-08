@@ -2,7 +2,6 @@ package ru.sgs.wandering.desktop;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintStream;
 import java.util.Locale;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
@@ -19,8 +18,6 @@ public class DesktopLauncher {
 	static Settings cfg;
 	
 	public static void main (String[] arg) throws FileNotFoundException, IOException {
-		//System.setOut(new PrintStream(System.out, true, "Cp886"));
-
 		locale = Locale.getDefault() + "";
 		
 		lan = new Language(locale);
