@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 /**
- * Класс для рисовки секстур
+ * Класс для рисовки текстур
  * @author Yarik
  * @version 0.1
  */
