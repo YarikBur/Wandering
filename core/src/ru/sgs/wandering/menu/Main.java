@@ -53,10 +53,10 @@ public class Main implements Screen {
 		
 		
 		batch.begin();
-//		batch.draw(gui, 0, 0);
+		//batch.draw(gui, 0, 0);
 		inventory.setCellY(scroll);
 		inventory.render(batch, ((Variables.stringToInt(Settings.getProperty("width"))/100)*78.5f)/2, ((Variables.stringToInt(Settings.getProperty("height"))/100)*10f)+2);
-		profile.render(batch, ((Variables.stringToInt(Settings.getProperty("width"))/100)*78.5f)/2, ((Variables.stringToInt(Settings.getProperty("height"))/100)*10f)+13*2);
+		profile.render(batch, ((Variables.stringToInt(Settings.getProperty("width"))/100)*78.5f)/2, ((Variables.stringToInt(Settings.getProperty("height"))/100)*10f)+45*2);
 		batch.end();
 	}
 
