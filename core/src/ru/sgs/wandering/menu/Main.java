@@ -22,6 +22,7 @@ public class Main implements Screen {
 	Cell cell;
 	Texture gui;
 	Profile profile;
+	
 	@Override
 	public void show() {
 		cam = new OrthographicCamera();
@@ -31,13 +32,11 @@ public class Main implements Screen {
 		cam.update();
 		batch = new SpriteBatch();
 
-		cell = new Cell();
-		cell.setTexture();
+		cell = new Cell("cell.png");
 		
-		inventory = new Inventory();
-		inventory.setTexture();
-		gui = new Texture("gui.png");
-		profile = new Profile();
+		inventory = new Inventory("inventory.png", ((Variables.stringToInt(Settings.getProperty("width"))/100)*17.5f), (Variables.stringToInt(Settings.getProperty("height"))/100)*28f);
+		gui = new Texture("gui/new_gui.png");
+		profile = new Profile("inventory.png", ((Variables.stringToInt(Settings.getProperty("width"))/100)*17.5f), ((Variables.stringToInt(Settings.getProperty("height"))/100)*40f) + 4f);
 	}
 	
 	int scroll = 0;
@@ -53,10 +52,10 @@ public class Main implements Screen {
 		
 		
 		batch.begin();
-		//batch.draw(gui, 0, 0);
-		inventory.setCellY(scroll);
-		inventory.render(batch, ((Variables.stringToInt(Settings.getProperty("width"))/100)*78.5f)/2, ((Variables.stringToInt(Settings.getProperty("height"))/100)*10f)+2);
-		profile.render(batch, ((Variables.stringToInt(Settings.getProperty("width"))/100)*78.5f)/2, ((Variables.stringToInt(Settings.getProperty("height"))/100)*10f)+45*2);
+		batch.draw(gui, 0, 0);
+		inventory.render(batch, ((Variables.stringToInt(Settings.getProperty("width"))/100)*78.5f)/2, ((Variables.stringToInt(Settings.getProperty("height"))/100)*10f)+16);
+		profile.render(batch, ((Variables.stringToInt(Settings.getProperty("width"))/100)*78.5f)/2, ((Variables.stringToInt(Settings.getProperty("height"))/100)*10f)+106);
+		
 		batch.end();
 	}
 
@@ -96,22 +95,12 @@ public class Main implements Screen {
 		if(Gdx.input.isKeyPressed(Input.Keys.X))
 			scroll++;
 		
-		if(Gdx.input.isButtonPressed(0)) {
-			if((600-Gdx.input.getY()) >= inventory.getScroll().getMinYScroll() && (600-Gdx.input.getY()) <= inventory.getScroll().getMaxYScroll()+7)
-				if(Gdx.input.getX() >= inventory.getScroll().getX() && Gdx.input.getX() <= (inventory.getScroll().getX()+(7*2))) {
-					inventory.getScroll().scroll(600-Gdx.input.getY()-7);
-					System.out.println((600-Gdx.input.getY()) + "  " + inventory.getScroll().getY());
-				}
-		}
 	}
 
 	@Override
 	public void resize(int width, int height) {
 		Settings.setProperty("width", width + "");
 		Settings.setProperty("height", height + "");
-		
-		inventory.setResolution();
-		cell.setResolution();
 		
 		cam.viewportWidth = Variables.stringToInt(Settings.getProperty("width"));
 		cam.viewportHeight = Variables.stringToInt(Settings.getProperty("height"));

@@ -19,7 +19,7 @@ public class DesktopLauncher {
 	
 	public static void main (String[] arg) throws FileNotFoundException, IOException {
 		locale = Locale.getDefault() + "";
-		locale = "en_UK"; 
+//		locale = "en_UK";
 		
 		lan = new Language(locale);
 		cfg = new Settings();
@@ -29,6 +29,7 @@ public class DesktopLauncher {
 		
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.title = "Wandering";
+		config.resizable = false;
 		config.width = Integer.parseInt(Settings.getProperty("width"));
 		config.height = Integer.parseInt(Settings.getProperty("height"));
 		new LwjglApplication(new Start(), config);

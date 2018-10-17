@@ -1,17 +1,8 @@
 package ru.sgs.wandering.gui;
 
-import java.util.Map;
-
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.sgstudio.sgs02.utils.Tiles;
 
-public class Scroll implements GUI, SCROLLS{
-	private static Tiles tiles;
-	private static Map<String, TextureRegion> textureRegions;
-	
-	private float Height;
-	
+public class Scroll extends GUISuper implements SCROLLS{
 	private float xScroll;
 	private float yScroll;
 	private float minYScroll;
@@ -19,19 +10,9 @@ public class Scroll implements GUI, SCROLLS{
 	
 	private boolean create=false;
 	
-	public Scroll() {
-		setTexture();
-	}
-	
-	public void setHeight(float height) {
-		Height = height;
-	}
-	
-	@Override
-	public void setTexture() {
-		tiles = new Tiles();
-		tiles.createAtlas("gui/scroll.png", 1, 4);
-		textureRegions = tiles.getTextureRegion();
+	public Scroll(String texture, float width, float height) {
+		this.setTexture(texture);
+		this.setResolution(width, height);
 	}
 
 	@Override
@@ -57,31 +38,6 @@ public class Scroll implements GUI, SCROLLS{
 			y = minYScroll;
 		
 		yScroll = y;
-	}
-	
-	@Override
-	public void setResolution() {
-
-	}
-
-	@Override
-	public float getWigth() {
-		return 7;
-	}
-
-	@Override
-	public float getHeight() {
-		return Height;
-	}
-
-	@Override
-	public Map<String, TextureRegion> getTextureRegions() {
-		return textureRegions;
-	}
-
-	@Override
-	public TextureRegion getTextureRegions(String key) {
-		return textureRegions.get(key);
 	}
 
 	@Override

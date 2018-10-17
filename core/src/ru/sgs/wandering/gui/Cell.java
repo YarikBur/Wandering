@@ -1,24 +1,23 @@
 package ru.sgs.wandering.gui;
 
-import java.util.Map;
-
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.sgstudio.sgs02.utils.Settings;
-import com.sgstudio.sgs02.utils.Tiles;
 import com.sgstudio.sgs02.utils.Variables;
 
-public class Cell implements GUI{
+public class Cell extends GUISuper {
 	private static float Width;
 	private static float Height;
-	
-	private static Tiles tiles;
-	private static Map<String, TextureRegion> textureRegions;
 	
 	private String itemName;
 	private int itemQuantity;
 	private float h;
 	private static float y;
+	
+	public Cell(String texture) {
+		this.setTexture(texture);
+		Width = (Variables.stringToInt(Settings.getProperty("width"))/100)*3.75f;
+		Height = (Variables.stringToInt(Settings.getProperty("height"))/100)*5f;
+	}
 	
 	public void setH(float y) {
 		this.h = y;
@@ -53,45 +52,17 @@ public class Cell implements GUI{
 	}
 	
 	@Override
-	public void setTexture() {
-		tiles = new Tiles();
-		tiles.createAtlas("gui/cell.png", 6, 6);
-		textureRegions = tiles.getTextureRegion();
+	public void render(SpriteBatch batch, float x, float y) {
+		Render.render(batch, x, y, Width, Height, getTextureRegions());
 	}
 	
 	@Override
-	public void render(SpriteBatch batch, float f, float g) {
+	public void render(SpriteBatch batch, float f, float g, boolean inventory) {
 		if((h+3 + 6*14 - 7) < g+14) {
 			Render.render(batch, f, g, Width, Height, getTextureRegions(), g+14-(h+3 + 6*14 - 7), 0);
 		} else if(g > 0) {
 			Render.render(batch, f, g, Width, Height, getTextureRegions(), 0, h-g);
 		} else if(g < 0)
 			Render.render(batch, f, g, Width, Height, getTextureRegions());
-	}
-
-	@Override
-	public void setResolution() {
-		Width = (Variables.stringToInt(Settings.getProperty("width"))/100)*3.75f;
-		Height = (Variables.stringToInt(Settings.getProperty("height"))/100)*5f;
-	}
-
-	@Override
-	public float getWigth() {
-		return Width;
-	}
-
-	@Override
-	public float getHeight() {
-		return Height;
-	}
-
-	@Override
-	public Map<String, TextureRegion> getTextureRegions() {
-		return textureRegions;
-	}
-
-	@Override
-	public TextureRegion getTextureRegions(String key) {
-		return textureRegions.get(key);
 	}
 }
