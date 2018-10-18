@@ -11,7 +11,7 @@ public class Description extends GUISuper {
 	
 	@Override
 	public void render(SpriteBatch batch, float x, float y) {
-		Render.render(batch, x, y, getWigth(), getHeight(), getTextureRegions(), 3, 10, 3, 3);
+		Render.render(batch, x, y, getWigth(), getHeight(), this.getTextureRegions(), 3, 11, 3, 3);
 	}
 	
 }

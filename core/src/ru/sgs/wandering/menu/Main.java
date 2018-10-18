@@ -11,6 +11,7 @@ import com.sgstudio.sgs02.utils.Settings;
 import com.sgstudio.sgs02.utils.Variables;
 
 import ru.sgs.wandering.gui.Cell;
+import ru.sgs.wandering.gui.Description;
 import ru.sgs.wandering.gui.Inventory;
 import ru.sgs.wandering.gui.Profile;
 
@@ -22,6 +23,7 @@ public class Main implements Screen {
 	Cell cell;
 	Texture gui;
 	Profile profile;
+	Description description;
 	
 	@Override
 	public void show() {
@@ -34,9 +36,10 @@ public class Main implements Screen {
 
 		cell = new Cell("cell.png");
 		
-		inventory = new Inventory("inventory.png", ((Variables.stringToInt(Settings.getProperty("width"))/100)*17.5f), (Variables.stringToInt(Settings.getProperty("height"))/100)*28f);
 		gui = new Texture("gui/new_gui.png");
+		inventory = new Inventory("inventory.png", ((Variables.stringToInt(Settings.getProperty("width"))/100)*17.5f), (Variables.stringToInt(Settings.getProperty("height"))/100)*28f);
 		profile = new Profile("inventory.png", ((Variables.stringToInt(Settings.getProperty("width"))/100)*17.5f), ((Variables.stringToInt(Settings.getProperty("height"))/100)*40f) + 4f);
+		description = new Description("inventory.png", ((Variables.stringToInt(Settings.getProperty("width"))/100)*17.5f), ((Variables.stringToInt(Settings.getProperty("height"))/100*19f) + 2f));
 	}
 	
 	int scroll = 0;
@@ -52,9 +55,10 @@ public class Main implements Screen {
 		
 		
 		batch.begin();
-		batch.draw(gui, 0, 0);
+//		batch.draw(gui, 0, 0);
 		inventory.render(batch, ((Variables.stringToInt(Settings.getProperty("width"))/100)*78.5f)/2, ((Variables.stringToInt(Settings.getProperty("height"))/100)*10f)+16);
 		profile.render(batch, ((Variables.stringToInt(Settings.getProperty("width"))/100)*78.5f)/2, ((Variables.stringToInt(Settings.getProperty("height"))/100)*10f)+106);
+		description.render(batch, ((Variables.stringToInt(Settings.getProperty("width"))/100)*78.5f)/2, ((Variables.stringToInt(Settings.getProperty("height"))/100)+6f));
 		
 		batch.end();
 	}
