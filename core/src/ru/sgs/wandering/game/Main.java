@@ -11,11 +11,11 @@ import com.sgstudio.sgs02.utils.Settings;
 import com.sgstudio.sgs02.utils.Variables;
 
 import ru.sgs.wandering.gui.Cell;
-import ru.sgs.wandering.gui.Console;
-import ru.sgs.wandering.gui.Description;
-import ru.sgs.wandering.gui.Inventory;
-import ru.sgs.wandering.gui.Profile;
-import ru.sgs.wandering.gui.TextField;
+import ru.sgs.wandering.gui.Map;
+import ru.sgs.wandering.wrapper.Console;
+import ru.sgs.wandering.wrapper.Description;
+import ru.sgs.wandering.wrapper.Inventory;
+import ru.sgs.wandering.wrapper.Profile;
 
 public class Main implements Screen {
 	SpriteBatch batch;
@@ -26,11 +26,8 @@ public class Main implements Screen {
 	Texture gui;
 	Profile profile;
 	Description description;
-	TextField descriptionName;
-	TextField descriptionItem;
 	Console console;
-	TextField consoleInput;
-	TextField consoleOutput;
+	Map map;
 	
 	@Override
 	public void show() {
@@ -44,20 +41,17 @@ public class Main implements Screen {
 		cell = new Cell("cell.png");
 		
 		gui = new Texture("gui/new_gui.png");
-		inventory = new Inventory("inventory.png", ((Variables.stringToInt(Settings.getProperty("width"))/100)*17.5f), (Variables.stringToInt(Settings.getProperty("height"))/100)*28f);
-		profile = new Profile("inventory.png", ((Variables.stringToInt(Settings.getProperty("width"))/100)*17.5f), ((Variables.stringToInt(Settings.getProperty("height"))/100)*40f) + 4f);
-		description = new Description("inventory.png", ((Variables.stringToInt(Settings.getProperty("width"))/100)*17.5f), ((Variables.stringToInt(Settings.getProperty("height"))/100*19f) + 2f));
-		descriptionName = new TextField(((Variables.stringToInt(Settings.getProperty("width"))/100)*14f)+2, ((Variables.stringToInt(Settings.getProperty("height"))/100*2f) + 4f), true, 5);
-		descriptionItem = new TextField(((Variables.stringToInt(Settings.getProperty("width"))/100)*14f)+2, ((Variables.stringToInt(Settings.getProperty("height"))/100*14f) + 6f), false, 5);
-		console = new Console("inventory.png", ((Variables.stringToInt(Settings.getProperty("width"))/100)*73f), ((Variables.stringToInt(Settings.getProperty("height"))/100*21f) + 2f));
-		consoleInput = new TextField(((Variables.stringToInt(Settings.getProperty("width"))/100)*71f) + 4f, ((Variables.stringToInt(Settings.getProperty("height"))/100*3f)+2), true, 7);
-		consoleOutput = new TextField(((Variables.stringToInt(Settings.getProperty("width"))/100)*71f) +4f, ((Variables.stringToInt(Settings.getProperty("height"))/100*16f)+2), true, 5);
+		inventory = new Inventory();
+		profile = new Profile();
+		description = new Description();
+		map = new Map("inventory.png", ((Variables.stringToInt(Settings.getProperty("width"))/100)*73f), ((Variables.stringToInt(Settings.getProperty("height"))/100)*50f));
 		
+		console = new Console();
 		
-		descriptionName.setText("Name Item");
-		descriptionItem.setText("Description \nItem");
-		consoleInput.setText("computer@login:~$ help");
-		consoleOutput.setText("This is output console commands");
+		description.setDescriptionName("Name Item");
+		description.setDescriptionItem("Description \nItem");
+		console.setInputText("computer@login:~$ help");
+		console.setOutputText("This is output console commands");
 	}
 	
 	int scroll = 0;
@@ -74,14 +68,14 @@ public class Main implements Screen {
 		
 		batch.begin();
 //		batch.draw(gui, 0, 0);
-		inventory.render(batch, ((Variables.stringToInt(Settings.getProperty("width"))/100)*78.5f)/2, ((Variables.stringToInt(Settings.getProperty("height"))/100)*10f)+16);
-		profile.render(batch, ((Variables.stringToInt(Settings.getProperty("width"))/100)*78.5f)/2, ((Variables.stringToInt(Settings.getProperty("height"))/100)*10f)+106);
-		description.render(batch, ((Variables.stringToInt(Settings.getProperty("width"))/100)*78.5f)/2, ((Variables.stringToInt(Settings.getProperty("height"))/100)+6f));
-		descriptionItem.render(batch, ((Variables.stringToInt(Settings.getProperty("width"))/100)*78.5f)/2+3, ((Variables.stringToInt(Settings.getProperty("height"))/100)+9f));
-		descriptionName.render(batch, ((Variables.stringToInt(Settings.getProperty("width"))/100)*78.5f)/2+3, ((Variables.stringToInt(Settings.getProperty("height"))/100)+53f));
-		console.render(batch, ((Variables.stringToInt(Settings.getProperty("width"))/100)*4f)/2, ((Variables.stringToInt(Settings.getProperty("width"))/100)*3f)/2);
-		consoleInput.render(batch, ((Variables.stringToInt(Settings.getProperty("width"))/100)*4f)/2+3, ((Variables.stringToInt(Settings.getProperty("width"))/100)*3f)/2+3);
-		consoleOutput.render(batch, ((Variables.stringToInt(Settings.getProperty("width"))/100)*4f)/2+3, ((Variables.stringToInt(Settings.getProperty("width"))/100)*3f));
+		inventory.render(batch);
+		profile.render(batch);
+		description.render(batch);
+		
+		console.render(batch);
+		
+		map.render(batch, ((Variables.stringToInt(Settings.getProperty("width"))/100)*4f)/2, ((Variables.stringToInt(Settings.getProperty("height"))/100)*13f) + 4f);
+		
 		
 		batch.end();
 	}
@@ -93,10 +87,10 @@ public class Main implements Screen {
 	private float rotationSpeed = 0.5f;
 	
 	private void handleInput() {
-		if (Gdx.input.isKeyPressed(Input.Keys.A)) {
+		if (Gdx.input.isKeyPressed(Input.Keys.Q)) {
 			cam.zoom += 0.02;
 		}
-		if (Gdx.input.isKeyPressed(Input.Keys.Q)) {
+		if (Gdx.input.isKeyPressed(Input.Keys.W)) {
 			cam.zoom -= 0.02;
 		}
 		if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
@@ -111,10 +105,10 @@ public class Main implements Screen {
 		if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
 			cam.translate(0, 3, 0);
 		}
-		if (Gdx.input.isKeyPressed(Input.Keys.W)) {
+		if (Gdx.input.isKeyPressed(Input.Keys.A)) {
 			cam.rotate(-rotationSpeed, 0, 0, 1);
 		}
-		if (Gdx.input.isKeyPressed(Input.Keys.E)) {
+		if (Gdx.input.isKeyPressed(Input.Keys.S)) {
 			cam.rotate(rotationSpeed, 0, 0, 1);
 		}
 		if(Gdx.input.isKeyPressed(Input.Keys.Z))

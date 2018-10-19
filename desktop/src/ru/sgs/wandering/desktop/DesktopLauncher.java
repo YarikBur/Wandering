@@ -30,8 +30,8 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.title = "Wandering";
 		config.resizable = false;
-		config.width = Integer.parseInt(Settings.getProperty("width"));
-		config.height = Integer.parseInt(Settings.getProperty("height"));
+		config.width = 800;
+		config.height = 600;
 		new LwjglApplication(new Start(), config);
 	}
 }
