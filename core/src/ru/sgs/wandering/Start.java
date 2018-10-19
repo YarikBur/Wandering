@@ -2,7 +2,7 @@ package ru.sgs.wandering;
 
 import com.badlogic.gdx.Game;
 
-import ru.sgs.wandering.menu.Main;
+import ru.sgs.wandering.game.Main;
 
 public class Start extends Game {
 	private static Main menu;

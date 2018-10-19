@@ -38,7 +38,7 @@ public class Render {
 					else if(y==Height+g-2)
 						Scale.draw(batch, textureRegions.get("tiles1_0"), x, y, scale);
 					else
-						Scale.draw(batch, textureRegions.get("tiles1_1"), x, y, scale);
+						Scale.draw(batch, textureRegions.get("tiles1_0"), x, y, scale);
 				} else if(x==f+1) {
 					if(y==g)
 						Scale.draw(batch, textureRegions.get("tiles5_1"), x, y, scale);
@@ -54,7 +54,7 @@ public class Render {
 					if(y==g)
 						Scale.draw(batch, textureRegions.get("tiles5_5"), x, y, scale);
 					else if(y==g+1)
-						Scale.draw(batch, textureRegions.get("tiles4_4"), x, y, scale);
+						Scale.draw(batch, textureRegions.get("tiles4_5"), x, y, scale);
 					else if(y==Height+g-1)
 						Scale.draw(batch, textureRegions.get("tiles5_0"), x, y, scale);
 					else if(y==Height+g-2)
@@ -67,7 +67,7 @@ public class Render {
 					else if(y==g+1)
 						Scale.draw(batch, textureRegions.get("tiles4_4"), x, y, scale);
 					else if(y==Height+g-1)
-						Scale.draw(batch, textureRegions.get("tiles4_1"), x, y, scale);
+						Scale.draw(batch, textureRegions.get("tiles4_0"), x, y, scale);
 					else if(y==Height+g-2)
 						Scale.draw(batch, textureRegions.get("tiles4_1"), x, y, scale);
 					else
