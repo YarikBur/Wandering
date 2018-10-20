@@ -1,4 +1,4 @@
-package ru.sgs.wandering.gui;
+package ru.sgs.wandering.gui.render;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;

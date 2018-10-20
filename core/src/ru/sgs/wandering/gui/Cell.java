@@ -4,6 +4,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.sgstudio.sgs02.utils.Settings;
 import com.sgstudio.sgs02.utils.Variables;
 
+import ru.sgs.wandering.gui.render.Render;
+
 public class Cell extends GUISuper {
 	private static float Width;
 	private static float Height;

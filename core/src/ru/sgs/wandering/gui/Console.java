@@ -2,6 +2,8 @@ package ru.sgs.wandering.gui;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import ru.sgs.wandering.gui.render.Render;
+
 public class Console extends GUISuper {
 	/**
 	 * Инициализания окна

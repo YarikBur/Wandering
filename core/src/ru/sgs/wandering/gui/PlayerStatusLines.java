@@ -3,6 +3,8 @@ package ru.sgs.wandering.gui;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.sgstudio.sgs02.utils.Tiles;
 
+import ru.sgs.wandering.gui.render.Scale;
+
 public class PlayerStatusLines extends GUISuper {
 	private int[] col = {1, 1, 0};
 	private float scale = 2f;

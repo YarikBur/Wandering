@@ -1,4 +1,4 @@
-package ru.sgs.wandering.gui;
+package ru.sgs.wandering.gui.render;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;

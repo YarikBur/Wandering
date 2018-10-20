@@ -2,6 +2,8 @@ package ru.sgs.wandering.gui;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import ru.sgs.wandering.gui.render.Render;
+
 public class Process extends GUISuper {
 	public Process(String texture, float width, float height) {
 		this.setTexture(texture);

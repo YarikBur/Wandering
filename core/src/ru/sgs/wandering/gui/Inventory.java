@@ -5,6 +5,8 @@ import java.util.Map;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
+import ru.sgs.wandering.gui.render.Render;
+
 public class Inventory extends GUISuper {
 	private static float cellY;
 	private static Scroll scroll;

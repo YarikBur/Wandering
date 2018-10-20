@@ -2,6 +2,9 @@ package ru.sgs.wandering.gui;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import ru.sgs.wandering.gui.render.Render;
+import ru.sgs.wandering.gui.render.Text;
+
 public class TextField extends GUISuper {
 	private String text;
 	private boolean black;
