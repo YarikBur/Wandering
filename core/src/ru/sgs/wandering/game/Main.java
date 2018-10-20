@@ -15,6 +15,8 @@ import ru.sgs.wandering.gui.Map;
 import ru.sgs.wandering.wrapper.Console;
 import ru.sgs.wandering.wrapper.Description;
 import ru.sgs.wandering.wrapper.Inventory;
+import ru.sgs.wandering.wrapper.PlayerStatus;
+import ru.sgs.wandering.wrapper.Process;
 import ru.sgs.wandering.wrapper.Profile;
 
 public class Main implements Screen {
@@ -25,9 +27,11 @@ public class Main implements Screen {
 	Cell cell;
 	Texture gui;
 	Profile profile;
+	Process process;
 	Description description;
 	Console console;
 	Map map;
+	PlayerStatus status;
 	
 	@Override
 	public void show() {
@@ -44,13 +48,17 @@ public class Main implements Screen {
 		inventory = new Inventory();
 		profile = new Profile();
 		description = new Description();
+		process = new Process();
 		map = new Map("inventory.png", ((Variables.stringToInt(Settings.getProperty("width"))/100)*73f), ((Variables.stringToInt(Settings.getProperty("height"))/100)*50f));
+		status = new PlayerStatus();
 		
 		console = new Console();
 		
+		process.setProcessList("Test process    [====================>] 100%\n"
+				+ "Test process2  [=========>                   ]  45%");
 		description.setDescriptionName("Name Item");
 		description.setDescriptionItem("Description \nItem");
-		console.setInputText("computer@login:~$ help");
+		console.setInputText("computer@login:/$ help");
 		console.setOutputText("This is output console commands");
 	}
 	
@@ -71,11 +79,12 @@ public class Main implements Screen {
 		inventory.render(batch);
 		profile.render(batch);
 		description.render(batch);
-		
+		process.render(batch);
 		console.render(batch);
 		
 		map.render(batch, ((Variables.stringToInt(Settings.getProperty("width"))/100)*4f)/2, ((Variables.stringToInt(Settings.getProperty("height"))/100)*13f) + 4f);
 		
+		status.render(batch);
 		
 		batch.end();
 	}

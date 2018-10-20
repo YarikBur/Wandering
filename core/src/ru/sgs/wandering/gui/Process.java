@@ -2,8 +2,8 @@ package ru.sgs.wandering.gui;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class Map extends GUISuper {
-	public Map(String texture, float width, float height) {
+public class Process extends GUISuper {
+	public Process(String texture, float width, float height) {
 		this.setTexture(texture);
 		this.setResolution(width, height);
 	}
