@@ -6,7 +6,7 @@ import com.sgstudio.sgs02.utils.Tiles;
 import ru.sgs.wandering.gui.render.Scale;
 
 public class PlayerStatusLines extends GUISuper {
-	private int[] col = {1, 1, 0};
+	private int[] col = {1, 1, 1, 1};
 	private float scale = 2f;
 	
 	public PlayerStatusLines(String texture) {

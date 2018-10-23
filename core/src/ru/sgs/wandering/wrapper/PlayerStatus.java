@@ -13,6 +13,24 @@ public class PlayerStatus extends WrapperSuper {
 	PlayerStatusLines linesEnergy;
 	PlayerStatusLines linesStamina;
 	
+	private void setNewCol(PlayerStatusLines line, boolean full, boolean add) {
+		int i = 0;
+		if(add)
+			i = line.getCol().length + 1;
+		else
+			i = line.getCol().length - 1;
+		line.setNewCol(i, full);
+	}
+	
+	public void addCol(String view, boolean full, boolean add) {
+		if(view.equals("HP"))
+			setNewCol(linesHp, full, add);
+		else if(view.equals("Energy"))
+			setNewCol(linesEnergy, full, add);
+		else if(view.equals("Stamina"))
+			setNewCol(linesStamina, full, add);
+	}
+	
 	public PlayerStatus() {
 		this.setCoordinates(((Variables.stringToInt(Settings.getProperty("width"))/100)*4f)/2, 
 				(Variables.stringToInt(Settings.getProperty("height"))/100)*40.2f);
@@ -22,10 +40,6 @@ public class PlayerStatus extends WrapperSuper {
 		linesHp = new PlayerStatusLines("linesHP.png");
 		linesEnergy = new PlayerStatusLines("linesEN.png");
 		linesStamina = new PlayerStatusLines("linesST.png");
-		
-		linesHp.setNewCol(5, false);
-		linesEnergy.setNewCol(4, true);
-		linesStamina.setColColor(1, 0);
 	}
 	
 	@Override

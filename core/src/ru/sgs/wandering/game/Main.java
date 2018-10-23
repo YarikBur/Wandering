@@ -11,7 +11,7 @@ import com.sgstudio.sgs02.utils.Settings;
 import com.sgstudio.sgs02.utils.Variables;
 
 import ru.sgs.wandering.gui.Cell;
-import ru.sgs.wandering.gui.Map;
+import ru.sgs.wandering.wrapper.Map;
 import ru.sgs.wandering.wrapper.Console;
 import ru.sgs.wandering.wrapper.Description;
 import ru.sgs.wandering.wrapper.Inventory;
@@ -49,7 +49,7 @@ public class Main implements Screen {
 		profile = new Profile();
 		description = new Description();
 		process = new Process();
-		map = new Map("inventory.png", ((Variables.stringToInt(Settings.getProperty("width"))/100)*73f), ((Variables.stringToInt(Settings.getProperty("height"))/100)*50f));
+		map = new Map();
 		status = new PlayerStatus();
 		
 		console = new Console();
@@ -82,49 +82,70 @@ public class Main implements Screen {
 		process.render(batch);
 		console.render(batch);
 		
-		map.render(batch, ((Variables.stringToInt(Settings.getProperty("width"))/100)*4f)/2, ((Variables.stringToInt(Settings.getProperty("height"))/100)*13f) + 4f);
+		map.render(batch);
 		
 		status.render(batch);
 		
 		batch.end();
+		
+		map.renderGame(batch);
 	}
 
 	private float color(int color) {
 		return color/255f;
 	}
 	
-	private float rotationSpeed = 0.5f;
+//	private float rotationSpeed = 0.5f;
 	
 	private void handleInput() {
-		if (Gdx.input.isKeyPressed(Input.Keys.Q)) {
-			cam.zoom += 0.02;
-		}
-		if (Gdx.input.isKeyPressed(Input.Keys.W)) {
-			cam.zoom -= 0.02;
-		}
-		if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-			cam.translate(-3, 0, 0);
-		}
-		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-			cam.translate(3, 0, 0);
-		}
-		if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-			cam.translate(0, -3, 0);
-		}
-		if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-			cam.translate(0, 3, 0);
-		}
-		if (Gdx.input.isKeyPressed(Input.Keys.A)) {
-			cam.rotate(-rotationSpeed, 0, 0, 1);
-		}
-		if (Gdx.input.isKeyPressed(Input.Keys.S)) {
-			cam.rotate(rotationSpeed, 0, 0, 1);
-		}
-		if(Gdx.input.isKeyPressed(Input.Keys.Z))
-			scroll--;
-		if(Gdx.input.isKeyPressed(Input.Keys.X))
-			scroll++;
+		if(Gdx.input.isKeyJustPressed(Input.Keys.Q))
+			status.addCol("HP", true, true);
+		if(Gdx.input.isKeyJustPressed(Input.Keys.W))
+			status.addCol("HP", false, true);
+		if(Gdx.input.isKeyJustPressed(Input.Keys.A))
+			status.addCol("Energy", true, true);
+		if(Gdx.input.isKeyJustPressed(Input.Keys.S))
+			status.addCol("Energy", false, true);
+		if(Gdx.input.isKeyJustPressed(Input.Keys.Z))
+			status.addCol("Stamina", true, true);
+		if(Gdx.input.isKeyJustPressed(Input.Keys.X))
+			status.addCol("Stamina", false, true);
 		
+		if(Gdx.input.isKeyJustPressed(Input.Keys.E))
+			status.addCol("HP", false, false);
+		if(Gdx.input.isKeyJustPressed(Input.Keys.D))
+			status.addCol("Energy", false, false);
+		if(Gdx.input.isKeyJustPressed(Input.Keys.C))
+			status.addCol("Stamina", false, false);
+		
+//		if (Gdx.input.isKeyPressed(Input.Keys.Q)) {
+//			cam.zoom += 0.02;
+//		}
+//		if (Gdx.input.isKeyPressed(Input.Keys.W)) {
+//			cam.zoom -= 0.02;
+//		}
+//		if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+//			cam.translate(-3, 0, 0);
+//		}
+//		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+//			cam.translate(3, 0, 0);
+//		}
+//		if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+//			cam.translate(0, -3, 0);
+//		}
+//		if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+//			cam.translate(0, 3, 0);
+//		}
+//		if (Gdx.input.isKeyPressed(Input.Keys.A)) {
+//			cam.rotate(-rotationSpeed, 0, 0, 1);
+//		}
+//		if (Gdx.input.isKeyPressed(Input.Keys.S)) {
+//			cam.rotate(rotationSpeed, 0, 0, 1);
+//		}
+//		if(Gdx.input.isKeyPressed(Input.Keys.Z))
+//			scroll--;
+//		if(Gdx.input.isKeyPressed(Input.Keys.X))
+//			scroll++;
 	}
 
 	@Override
