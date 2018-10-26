@@ -1,13 +1,13 @@
-package ru.sgs.wandering.wrapper;
+package ru.sgs.wandering.gui.wrapper;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.sgstudio.sgs02.utils.Settings;
 import com.sgstudio.sgs02.utils.Variables;
 
-import ru.sgs.wandering.gui.TextField;
+import ru.sgs.wandering.gui.element.TextField;
 
 public class Console extends WrapperSuper {
-	ru.sgs.wandering.gui.Console console;
+	ru.sgs.wandering.gui.element.Console console;
 	TextField consoleInput;
 	TextField consoleOutput;
 	private float[] consoleInC = new float[2];
@@ -35,7 +35,7 @@ public class Console extends WrapperSuper {
 		consoleOutC[1] = ((Variables.stringToInt(Settings.getProperty("height"))/100)*6f)/2;
 		
 		
-		console = new ru.sgs.wandering.gui.Console(this.texture, this.width, this.height);
+		console = new ru.sgs.wandering.gui.element.Console(this.texture, this.width, this.height);
 	}
 	
 	@Override

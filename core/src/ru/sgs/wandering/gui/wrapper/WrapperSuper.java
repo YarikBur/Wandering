@@ -1,4 +1,4 @@
-package ru.sgs.wandering.wrapper;
+package ru.sgs.wandering.gui.wrapper;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 

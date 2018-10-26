@@ -1,4 +1,4 @@
-package ru.sgs.wandering.gui;
+package ru.sgs.wandering.gui.element;
 
 public interface SCROLLS {
 	float getX();

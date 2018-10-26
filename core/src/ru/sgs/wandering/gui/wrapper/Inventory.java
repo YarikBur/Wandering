@@ -1,11 +1,11 @@
-package ru.sgs.wandering.wrapper;
+package ru.sgs.wandering.gui.wrapper;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.sgstudio.sgs02.utils.Settings;
 import com.sgstudio.sgs02.utils.Variables;
 
 public class Inventory extends WrapperSuper {
-	ru.sgs.wandering.gui.Inventory inventory;
+	ru.sgs.wandering.gui.element.Inventory inventory;
 	
 	public Inventory() {
 		this.setSize((Variables.stringToInt(Settings.getProperty("width"))/100)*17.5f, 
@@ -14,7 +14,7 @@ public class Inventory extends WrapperSuper {
 				((Variables.stringToInt(Settings.getProperty("height"))/100)*10f)+16);
 		this.setTexture("inventory.png");
 		
-		inventory = new ru.sgs.wandering.gui.Inventory(this.texture, this.width, this.height);
+		inventory = new ru.sgs.wandering.gui.element.Inventory(this.texture, this.width, this.height);
 	}
 	
 	@Override

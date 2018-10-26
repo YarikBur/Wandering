@@ -1,4 +1,4 @@
-package ru.sgs.wandering.wrapper;
+package ru.sgs.wandering.gui.wrapper;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -10,7 +10,7 @@ import ru.sgs.wandering.game.KeyHandler;
 public class Map extends WrapperSuper {
 	OrthographicCamera cam;
 	ru.sgs.wandering.game.Render ren;
-	ru.sgs.wandering.gui.Map map;
+	ru.sgs.wandering.gui.element.Map map;
 	
 	public Map() {
 		this.setSize((Variables.stringToInt(Settings.getProperty("width"))/100)*73f, 
@@ -19,7 +19,7 @@ public class Map extends WrapperSuper {
 				((Variables.stringToInt(Settings.getProperty("height"))/100)*13f) + 4f);
 		this.setTexture("inventory.png");
 		
-		map = new ru.sgs.wandering.gui.Map(texture, width, height);
+		map = new ru.sgs.wandering.gui.element.Map(texture, width, height);
 	
 		init();
 	}

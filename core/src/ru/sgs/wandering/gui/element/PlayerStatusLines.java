@@ -1,4 +1,4 @@
-package ru.sgs.wandering.gui;
+package ru.sgs.wandering.gui.element;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.sgstudio.sgs02.utils.Tiles;

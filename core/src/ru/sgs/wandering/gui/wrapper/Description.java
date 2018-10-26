@@ -1,13 +1,13 @@
-package ru.sgs.wandering.wrapper;
+package ru.sgs.wandering.gui.wrapper;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.sgstudio.sgs02.utils.Settings;
 import com.sgstudio.sgs02.utils.Variables;
 
-import ru.sgs.wandering.gui.TextField;
+import ru.sgs.wandering.gui.element.TextField;
 
 public class Description extends WrapperSuper {
-	ru.sgs.wandering.gui.Description description;
+	ru.sgs.wandering.gui.element.Description description;
 	TextField descriptionName;
 	TextField descriptionItem;
 	private float[] desNameC = new float[2];
@@ -35,7 +35,7 @@ public class Description extends WrapperSuper {
 		desItemC[1] = (Variables.stringToInt(Settings.getProperty("height"))/100)+9f;
 		
 		
-		description = new ru.sgs.wandering.gui.Description(this.texture, this.width, this.height);
+		description = new ru.sgs.wandering.gui.element.Description(this.texture, this.width, this.height);
 	}
 	
 	@Override

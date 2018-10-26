@@ -1,11 +1,11 @@
-package ru.sgs.wandering.wrapper;
+package ru.sgs.wandering.gui.wrapper;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.sgstudio.sgs02.utils.Settings;
 import com.sgstudio.sgs02.utils.Variables;
 
-import ru.sgs.wandering.gui.PlayerStatusIcon;
-import ru.sgs.wandering.gui.PlayerStatusLines;
+import ru.sgs.wandering.gui.element.PlayerStatusIcon;
+import ru.sgs.wandering.gui.element.PlayerStatusLines;
 
 public class PlayerStatus extends WrapperSuper {
 	PlayerStatusIcon icon;

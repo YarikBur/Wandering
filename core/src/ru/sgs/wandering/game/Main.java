@@ -10,14 +10,14 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.sgstudio.sgs02.utils.Settings;
 import com.sgstudio.sgs02.utils.Variables;
 
-import ru.sgs.wandering.gui.Cell;
-import ru.sgs.wandering.wrapper.Map;
-import ru.sgs.wandering.wrapper.Console;
-import ru.sgs.wandering.wrapper.Description;
-import ru.sgs.wandering.wrapper.Inventory;
-import ru.sgs.wandering.wrapper.PlayerStatus;
-import ru.sgs.wandering.wrapper.Process;
-import ru.sgs.wandering.wrapper.Profile;
+import ru.sgs.wandering.gui.element.Cell;
+import ru.sgs.wandering.gui.wrapper.Console;
+import ru.sgs.wandering.gui.wrapper.Description;
+import ru.sgs.wandering.gui.wrapper.Inventory;
+import ru.sgs.wandering.gui.wrapper.Map;
+import ru.sgs.wandering.gui.wrapper.PlayerStatus;
+import ru.sgs.wandering.gui.wrapper.Process;
+import ru.sgs.wandering.gui.wrapper.Profile;
 
 public class Main implements Screen {
 	SpriteBatch batch;
